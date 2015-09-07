@@ -10,16 +10,22 @@ import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 public class Engine {
+	
 	static double gasTankSize = 1;
 	static String[] cars = new String[]{"Corvette", "F-150", "Motorcycle"};
 	static JLabel carChoose = new JLabel("Corvette");
 	static Double[] gasTank = new Double[]{19.1, 36.0, 8.0};
+	static JTextField enterMiles = new JTextField(15);
+	static JTextArea output = new JTextArea(50, 35);
+	static JLabel fillStatus = new JLabel("Gas Status: Filled up");
+	static JFrame frame;
+	static JPanel p2;
+	static JPanel p3;
+	
 	public static void main(String[] args){
-		final JTextField enterMiles = new JTextField(15);
-		final JTextArea output = new JTextArea(50, 35);
-		final JLabel fillStatus = new JLabel("Gas Status: Filled up");
-		final JButton b3 = new JButton("Choose car");
-		final JButton b4 = new JButton("DRIVE");
+		initFrame();
+		JButton b3 = new JButton("Choose car");
+		JButton b4 = new JButton("DRIVE");
 		b3.addActionListener(new ActionListener(){
 			int carCount;
 			@Override
@@ -43,10 +49,6 @@ public class Engine {
 		
 		JPanel p2 = new JPanel();
 		JPanel p3 = new JPanel();
-		JFrame frame = new JFrame("MPG Calculator 2000");
-		frame.setSize(800, 500);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.setVisible(true);
 		
 		p2.setLayout(new GridLayout(5, 1));
 		p2.add(b3);
@@ -76,5 +78,13 @@ public class Engine {
 		}else if(carChoose.getText().equals("Motorcycle")){
 			gasTankSize = gasTank[2];
 		}
+	}
+	public static void initFrame(){
+		p2 = new JPanel();
+		p3 = new JPanel();
+		frame = new JFrame("MPG Calculator 2000");
+		frame.setSize(800, 500);
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.setVisible(true);
 	}
 }
