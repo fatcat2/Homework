@@ -9,6 +9,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
+import javax.swing.JComponent;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -24,6 +25,7 @@ public class Engine {
 	static JFrame frame;
 	static JPanel p2;
 	static JPanel p3;
+	static int carCount = 0;
 	
 	public static void main(String[] args){
 		init();
@@ -32,14 +34,9 @@ public class Engine {
 		JPanel p2 = new JPanel();
 		JPanel p3 = new JPanel();
 		b3.addActionListener(new ActionListener(){
-			int carCount;
 			@Override
 			public void actionPerformed(ActionEvent e){
-                carCount++;
-                if(carCount > 2){carCount = 0;}
-                System.out.println(carCount);
-                carChoose.setText(cars[carCount]);
-                setGasTankSize();
+                setGasAndCar();
 			}
 		});
 		b4.addActionListener(new ActionListener(){
@@ -48,32 +45,32 @@ public class Engine {
 				writeOut();
 			}
 		});
-		p2.add(b3);
-		p2.add(carChoose);
-		p3.add(enterMiles);
-		p3.add(b4);
+		JComponent[] cList1 = new JComponent[]{b3, carChoose}; //p2
+		JComponent[] cList2 = new JComponent[]{enterMiles, b4};
+		JComponent[] cList3 = new JComponent[]{output, enterMiles, p2, p3};
+		addFrame(cList1, p2);
+		addFrame(cList2, p3);
+		addFrame(cList3, frame);
+	}
+	
+	
+	public static void addFrame(JComponent[] cList, JFrame target) {
 		frame.setLayout(new GridLayout(3, 2));
-		frame.add(output);
-		frame.add(enterMiles);
-		frame.add(p2);
-		frame.add(p3);
+		for(int i = 0; i < cList.length; i++){
+			target.add(cList[i]);
+		}
 		frame.pack();
+	}
+
+
+	public static void addFrame(JComponent[] cList, JComponent target){
+		for(int i = 0; i < cList.length; i++){
+			target.add(cList[i]);
+		}
 	}
 	public static double calcMPG(double tankSize, int mileage){
 		double mpg = mileage / tankSize;
 		return mpg;
-	}
-	public static double getGasTankSize(){
-		return gasTankSize;
-	}
-	public static void setGasTankSize(){
-		if(carChoose.getText().equals("Corvette")){
-			gasTankSize = gasTank[0];
-		}else if(carChoose.getText().equals("Ford F-150")){
-			gasTankSize = gasTank[1];
-		}else if(carChoose.getText().equals("Motorcycle")){
-			gasTankSize = gasTank[2];
-		}
 	}
 	public static void init(){
 		p2 = new JPanel();
@@ -83,17 +80,20 @@ public class Engine {
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setVisible(true);
 	}
+	public static double getGasTankSize(){
+		return gasTankSize;
+	}
+	public static void setGasAndCar(){
+        carCount++;
+        if(carCount > 2){carCount = 0;}
+        carChoose.setText(cars[carCount]);
+        gasTankSize = gasTank[carCount];
+	}
 	public static void writeOut(){
 		int miles;
-		String s1;
-		String s2;
-		String s3;
 		try{
 		miles = Integer.parseInt(enterMiles.getText());
-		s1 = "<html>You traveled: " + miles + " miles.<br>";
-		s2 = "Your gas tank size is: " + getGasTankSize() + " gallons.<br>";
-		s3 = "And your mileage is: "+ calcMPG(gasTankSize, miles) + " mpg!</html>";
-		output.setText(s1 + s2 + s3);
+		output.setText("<html>You traveled: " + miles + " miles.<br>" + "Your gas tank size is: " + getGasTankSize() + " gallons.<br>" + "And your mileage is: "+ calcMPG(gasTankSize, miles) + " mpg!</html>");
 		}catch(NumberFormatException e1){
 			output.setText("Please enter a valid number from 0 to inifinity!");
 		}
