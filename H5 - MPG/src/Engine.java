@@ -45,21 +45,7 @@ public class Engine {
 		b4.addActionListener(new ActionListener(){
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				int miles;
-				String s1;
-				String s2;
-				String s3;
-				String s4;
-				try{
-				miles = Integer.parseInt(enterMiles.getText());
-				s1 = "<html>You traveled: " + miles + " miles.<br>";
-				s2 = "Your gas tank size is: " + getGasTankSize() + " gallons.<br>";
-				s3 = "And your mileage is: "+ calcMPG(gasTankSize, miles) + " mpg!</html>";
-				s4 = s1 + s2 + s3;
-				output.setText(s4);
-				}catch(NumberFormatException e1){
-					output.setText("Please enter a valid number from 0 to inifinity!");
-				}
+				writeOut();
 			}
 		});
 		p2.add(b3);
@@ -96,5 +82,20 @@ public class Engine {
 		frame.setSize(800, 500);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setVisible(true);
+	}
+	public static void writeOut(){
+		int miles;
+		String s1;
+		String s2;
+		String s3;
+		try{
+		miles = Integer.parseInt(enterMiles.getText());
+		s1 = "<html>You traveled: " + miles + " miles.<br>";
+		s2 = "Your gas tank size is: " + getGasTankSize() + " gallons.<br>";
+		s3 = "And your mileage is: "+ calcMPG(gasTankSize, miles) + " mpg!</html>";
+		output.setText(s1 + s2 + s3);
+		}catch(NumberFormatException e1){
+			output.setText("Please enter a valid number from 0 to inifinity!");
+		}
 	}
 }
