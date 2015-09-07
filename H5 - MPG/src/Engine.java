@@ -10,7 +10,7 @@ import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 public class Engine {
-	@SuppressWarnings("static-access")
+	@SuppressWarnings({ "static-access", "unused" })
 	public static void main(String[] args){
 		final String[] cars = new String[]{"Corvette", "F-150", "Motorcycle"};
 		final Double[] gasTank = new Double[]{19.1, 36.0, 8.0};
@@ -57,6 +57,10 @@ public class Engine {
 		});
 		if(carChoose.getText().equals("Corvette")){
 			gasTankSize = gasTank[0];
+		}else if(carChoose.getText().equals("Ford F-150")){
+			gasTankSize = gasTank[1];
+		}else if(carChoose.getText().equals("Motorcycle")){
+			gasTankSize = gasTank[2];
 		}
 		JPanel p2 = new JPanel();
 		JPanel p3 = new JPanel();
