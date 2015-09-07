@@ -1,3 +1,9 @@
+/*
+ * Author: fatcat2
+ * Date: September 6, 2015
+ * Description: This is the Engine class of the MPG Calculator. The program has the 
+ * user enter mileage and select a vehicle, then calculates the gas mileage of the car.
+ */
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -46,34 +52,25 @@ public class Engine {
 				output.setText("You traveled: " + miles  + " miles."+ "\nYour Tank Size is: " + getGasTankSize() + "\nAnd your mileage is: " + calcMPG(gasTankSize, miles) + "mpg!");
 				}catch(NumberFormatException e1){
 					output.setText("Please enter a valid number from 0 to inifinity!");
-					
 				}
-				
 			}
 		});
-		
-		
 		p2.add(b3);
 		p2.add(carChoose);
-		
 		p3.add(enterMiles);
 		p3.add(b4);
-		
 		frame.setLayout(new GridLayout(3, 1));
-		frame.add(output);
+		frame.add(output);	
 		frame.add(p3);
 		frame.add(p2);
 	}
-	
 	public static double calcMPG(double tankSize, int mileage){
 		double mpg = mileage / tankSize;
 		return mpg;
 	}
-	
 	public static double getGasTankSize(){
 		return gasTankSize;
 	}
-	
 	public static void setGasTankSize(){
 		if(carChoose.getText().equals("Corvette")){
 			gasTankSize = gasTank[0];
@@ -83,7 +80,6 @@ public class Engine {
 			gasTankSize = gasTank[2];
 		}
 	}
-	
 	public static void init(){
 		p2 = new JPanel();
 		p3 = new JPanel();
