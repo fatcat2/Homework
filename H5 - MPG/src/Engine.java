@@ -12,7 +12,6 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.JTextArea;
 import javax.swing.JTextField;
 public class Engine {
 	
@@ -21,7 +20,7 @@ public class Engine {
 	static JLabel carChoose = new JLabel("Corvette");
 	static Double[] gasTank = new Double[]{19.1, 36.0, 8.0};
 	static JTextField enterMiles = new JTextField(15);
-	static JTextArea output = new JTextArea(50, 20);
+	static JLabel output = new JLabel("<html>Welcome to the MPG Calculator 3000!<br>Please enter the amount of miles you would like to travel.<br>You are able to choose from one of the cars below.<br>Just click the choose car button to cycle through the choices.<br>Each car has a different sized gas tank.<br> It will affect the end result.</html>");
 	static JFrame frame;
 	static JPanel p2;
 	static JPanel p3;
@@ -47,9 +46,17 @@ public class Engine {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				int miles;
+				String s1;
+				String s2;
+				String s3;
+				String s4;
 				try{
 				miles = Integer.parseInt(enterMiles.getText());
-				output.setText("You traveled: " + miles  + " miles."+ "\nYour Tank Size is: " + getGasTankSize() + "\nAnd your mileage is: " + calcMPG(gasTankSize, miles) + "mpg!");
+				s1 = "<html>You traveled: " + miles + " miles.<br>";
+				s2 = "Your gas tank size is: " + getGasTankSize() + " gallons.<br>";
+				s3 = "And your mileage is: "+ calcMPG(gasTankSize, miles) + " mpg!</html>";
+				s4 = s1 + s2 + s3;
+				output.setText(s4);
 				}catch(NumberFormatException e1){
 					output.setText("Please enter a valid number from 0 to inifinity!");
 				}
@@ -59,10 +66,12 @@ public class Engine {
 		p2.add(carChoose);
 		p3.add(enterMiles);
 		p3.add(b4);
-		frame.setLayout(new GridLayout(3, 1));
-		frame.add(output);	
-		frame.add(p3);
+		frame.setLayout(new GridLayout(3, 2));
+		frame.add(output);
+		frame.add(enterMiles);
 		frame.add(p2);
+		frame.add(p3);
+		frame.pack();
 	}
 	public static double calcMPG(double tankSize, int mileage){
 		double mpg = mileage / tankSize;
@@ -84,7 +93,7 @@ public class Engine {
 		p2 = new JPanel();
 		p3 = new JPanel();
 		frame = new JFrame("MPG Calculator 2000");
-		frame.setSize(500, 500);
+		frame.setSize(800, 500);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setVisible(true);
 	}
