@@ -38,6 +38,8 @@ public class Engine {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				addPenny(1);
+				p.coinList.add(new Penny());
+				p.calcVal();
 				pennyCount.setText("Pennies: " + numPenny);
 			}
 		});
@@ -46,6 +48,8 @@ public class Engine {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				addNickel(1);
+				p.coinList.add(new Nickel());
+				p.calcVal();
 				nickelCount.setText("Nickels: " + numNickle);
 			}
 		});
@@ -54,6 +58,8 @@ public class Engine {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				addDime(1);
+				p.coinList.add(new Dime());
+				p.calcVal();
 				dimeCount.setText("Dimes: " + numDime);
 			}
 		});
@@ -62,6 +68,8 @@ public class Engine {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				addQuarter(1);
+			p.coinList.add(new Quarter());
+				p.calcVal();
 				quarterCount.setText("Quarters: " + numQuarter);
 			}
 		});

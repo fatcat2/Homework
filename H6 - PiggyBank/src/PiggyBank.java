@@ -6,16 +6,20 @@ public class PiggyBank {
 	int numCoins;
 	
 	double weight;
-	int totalVal = 1;
+	Double totalVal = 1.0;
 	public PiggyBank(){
 		numCoins = 0;
 		weight = 0;
-		totalVal = 0;
+		totalVal = 0.0;
 	}
 	public void calcVal(){
-		for(Coin c: this.coinList){
-			addVal(c.getValue());
+		int total = 0;
+		for(int i = 0; i < coinList.size(); i++){
+			System.out.println(coinList.get(i).getValue());
+			total += coinList.get(i).getValue();
 		}
+		System.out.println("total: " + total + "\n");
+		totalVal = (double) (total / 100);
 	}
 	public double getVal(){
 		calcVal();
@@ -27,7 +31,10 @@ public class PiggyBank {
 	public int getCoins(){
 		return numCoins;
 	}
-	public void addVal(double x){
+	public void addVal(int x){
 		totalVal += x; 
+	}
+	public void addCoin(Coin c){
+		this.coinList.add(c);
 	}
 }
