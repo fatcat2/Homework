@@ -1,8 +1,7 @@
 
 public class Penny extends Coin {
 	public Penny(){
-		super();
-		val = 1;
+		val = 1.0;
 		weight = 2.5;
 	}
 }

@@ -1,5 +1,5 @@
 public class Coin {
-	int val;
+	double val;
 	double weight;
 	public double getValue(){
 		return val / 100;
