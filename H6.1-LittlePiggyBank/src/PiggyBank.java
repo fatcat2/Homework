@@ -8,10 +8,22 @@ import java.util.ArrayList;
 import javax.swing.JLabel;
 
 
-public class PiggyBank {
+public class PiggyBank<qNum> {
 	//The coins are stored in the arrayList
 	ArrayList<Coin> coinList = new ArrayList<Coin>();
 	Double totalVal = 1.0; //Init total value;.
+
+	final int Penny = 0;
+	final int Nickel = 1;
+	final int Dime = 2;
+	final int Quarter = 3;
+	final int Dollar = 4;
+	
+	int pNum;
+	int dNum;
+	int nNum;
+	int qNum;
+	int DNum;
 	public PiggyBank(){
 	}
 	//The other constructor.
@@ -30,19 +42,77 @@ public class PiggyBank {
 		}
 	}
 	//Calculates the total money and setsTExt the appropriate JLabel
-	public void calcVal(JLabel l){
+	public void calcVal(JLabel totalLabel, JLabel cLabel, int cType){
+		String coinName = coinType(cType);
 		double total = 0;
 		for(int i = 0; i < coinList.size(); i++){
 			total += coinList.get(i).getValue();
 		}
-		l.setText("Total Money: $" + toPercent(total));
+		cLabel.setText(coinName + ": ");
+		totalLabel.setText("Total Money: $" + toPercent(total));
 	}
 	//Used to circumvent some errors.
 	public double toPercent(double x){
 		return x/ 100;
 	}
 	//Name says it all, clears out all the money in the bank.
-	public void youBrokeSon(){
+	public void youBrokeSon(JLabel totalLabel){
 		coinList.clear();
+		clearCoffers();
+		totalLabel.setText("$0.00");
+	}
+	public int getQNum(){
+		return qNum;
+	}
+	public int getPNum(){
+		return pNum;
+	}
+	public int getDNum(){
+		return dNum;
+	}
+	public int getDollarNum(){
+		return DNum;
+	}
+	public void addCoin(Coin c){
+		coinList.add(c);
+		updateNums();
+	}
+	private String coinType(int coin){
+		String s = null;
+		switch(coin){
+		case 0:
+			s = "Pennies";
+		case 1:
+			s = "Nickels";
+		case 2:
+			s = "Dimes";
+		case 3:
+			s = "Quarters";
+		case 4:
+			s = "Dollars";
+		}
+		return s;
+	}
+	private void clearCoffers(){
+		qNum = 0;
+		dNum = 0;
+		pNum = 0;
+		DNum = 0;
+		nNum = 0;
+	}
+	private void updateNums(){
+		for(Coin c : coinList){
+			if(c instanceof Quarter ){
+				qNum++;
+			}else if(c instanceof Penny){
+				pNum++;
+			}else if(c instanceof Dime){
+				dNum++;
+			}else if(c instanceof Nickel){
+				nNum++;
+			}else if(c instanceof Dollar){
+				DNum++;
+			}
+		}
 	}
 }

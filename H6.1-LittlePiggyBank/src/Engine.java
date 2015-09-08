@@ -16,12 +16,6 @@ import javax.swing.JPanel;
 
 
 public class Engine {
-	//Declaring variables.
-	static int numPenny;
-	static int numNickle;
-	static int numDime;
-	static int numQuarter;
-	static int count;
 	
 	//Declaring the PiggyBank outside so it can be used in the ActionListeners
 	static PiggyBank p = new PiggyBank();
@@ -31,6 +25,7 @@ public class Engine {
 	static JLabel nickelCount = new JLabel("Nickels: 0");
 	static JLabel dimeCount = new JLabel("Dimes: 0");
 	static JLabel quarterCount = new JLabel("Quarters: 0");
+	static JLabel dollarCount = new JLabel("Dollars: 0");
 	static JLabel totalMoney = new JLabel("Total Money: $0.00");
 	static JComponent[] labelList = new JLabel[]{pennyCount, nickelCount, dimeCount, quarterCount, totalMoney};
 	
@@ -50,48 +45,48 @@ public class Engine {
 		JButton addNickel = new JButton("Add Nickel");
 		JButton addDime = new JButton("Add Dime");
 		JButton addQuarter = new JButton("Add Quarter");
+		JButton addDollar = new JButton("Add Dollar");
 		JButton breakIt = new JButton("Break the bank!");
-		JButton[] buttonList = new JButton[]{addPenny, addNickel, addDime, addQuarter, breakIt};
+		JButton[] buttonList = new JButton[]{addPenny, addNickel, addDime, addQuarter, addDollar, breakIt};
 		
 		//Adding all the ActionListeners.
 		addPenny.addActionListener(new ActionListener(){
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				//Content of all methods pretty much the same.
-				addPenny(1); //Add value to pennyCount
 				p.coinList.add(new Penny()); //add that type coin to the ArrayList in PiggyBank
-				p.calcVal(totalMoney); //Calculate the total money and setText() of JLabel accordingly
-				pennyCount.setText("Pennies: " + numPenny); //Set the text of the numPenny.
+				p.calcVal(totalMoney, pennyCount, p.Penny); //Calculate the total money and setText() of JLabel accordingly
 			}
 		});
 		
 		addNickel.addActionListener(new ActionListener(){
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				addNickel(1);
 				p.coinList.add(new Nickel());
-				p.calcVal(totalMoney);
-				nickelCount.setText("Nickels: " + numNickle);
+				p.calcVal(totalMoney, nickelCount, p.Nickel);
 			}
 		});
 		
 		addDime.addActionListener(new ActionListener(){
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				addDime(1);
 				p.coinList.add(new Dime());
-				p.calcVal(totalMoney);
-				dimeCount.setText("Dimes: " + numDime);
+				p.calcVal(totalMoney, dimeCount, p.Dime);
 			}
 		});
 		
 		addQuarter.addActionListener(new ActionListener(){
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				addQuarter(1);
-			p.coinList.add(new Quarter());
-				p.calcVal(totalMoney);
-				quarterCount.setText("Quarters: " + numQuarter);
+				p.addCoin(new Quarter());
+				p.calcVal(totalMoney, quarterCount, p.Quarter);
+			}
+		});
+		addDollar.addActionListener(new ActionListener(){
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				p.coinList.add(new Dollar()); //add that type coin to the ArrayList in PiggyBank
+				p.calcVal(totalMoney, dollarCount, p.Dollar); //Calculate the total money and setText() of JLabel accordingly
 			}
 		});
 		//This method clears the banks accout out.
@@ -99,14 +94,9 @@ public class Engine {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				p.youBrokeSon(); //Clears money in PiggyBank
-				p.calcVal(totalMoney);
-				SteamSummerSale(); //Clears money on GUI
+				p.youBrokeSon(totalMoney); //Clears money in PiggyBank
+//				SteamSummerSale(); //Clears money on GUI
 				//Makes sure the message gets across.
-				quarterCount.setText("Quarters: " + numQuarter);
-				dimeCount.setText("Dimes: " + numDime);
-				nickelCount.setText("Nickels: " + numNickle);
-				pennyCount.setText("Pennies: " + numPenny);
 			}
 		});
 		
@@ -131,25 +121,4 @@ public class Engine {
 		}
 	}
 	
-	//These methods increase the count of the corresponding thing.
-	public static void addPenny(int x){
-		numPenny += x;
-	}
-	public static void addNickel(int x){
-		numNickle += x;
-	}
-	public static void addDime(int x){
-		numDime += x;
-	}
-	public static void addQuarter(int x){
-		numQuarter += x;
-	}
-	
-	//This method is named for the infamous mid-Summer event also known as the Black Hole of Money.
-	public static void SteamSummerSale(){
-		numPenny = 0;
-		numNickle = 0;
-		numDime = 0;
-		numQuarter = 0;
-	}
 }
