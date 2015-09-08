@@ -13,12 +13,13 @@ public class PiggyBank {
 		totalVal = 0;
 	}
 	public void calcVal(){
-		for(Coin c: coinList){
+		for(Coin c: this.coinList){
 			totalVal += c.getValue();
 			weight += c.getWeight();
 		}
 	}
 	public double getVal(){
+		calcVal();
 		return totalVal;
 	}
 	public double getWeight(){
@@ -27,28 +28,7 @@ public class PiggyBank {
 	public int getCoins(){
 		return numCoins;
 	}
-	public void addPenny(){
-		coinList.add(new Penny());
-		numCoins++;
+	public void addVal(double x){
+		totalVal += x; 
 	}
-	public void addNickel(){
-		coinList.add(new Nickel());
-		numCoins++;
-	}
-	public void addDime(){
-		coinList.add(new Dime());
-		numCoins++;
-	}
-	public void addQuarter(){
-		coinList.add(new Quarter());
-		numCoins++;
-	}
-	public void addHalfDollar(){
-		coinList.add(new HalfDollar());
-		numCoins++;
-	}
-	public void addDollar(){
-		coinList.add(new PresDollar());
-		numCoins++;
-;	}
 }

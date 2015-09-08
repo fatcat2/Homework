@@ -1,4 +1,3 @@
-
 public class Coin {
 	int val;
 	double weight;

@@ -14,14 +14,12 @@ public class Engine {
 	int numNickle;
 	int numDime;
 	int numQuarter;
-	int numHalfDollar;
-	int numPresDollar;
-	int numNADollar;
+	static int count;
+	static PiggyBank p = new PiggyBank();
+	static Coin[] coinList = new Coin[]{new Penny(), new Nickel(), new Dime(), new Quarter()};
 	public static void main(String[] args){
 		JFrame frame = new JFrame("PiggyBankYay!");
 		frame.setSize(640, 400);
-		PiggyBank p = new PiggyBank();
-		
 		JPanel input = new JPanel();
 		JPanel inputSub1 = new JPanel();
 		JPanel inputSub2 = new JPanel();
@@ -30,29 +28,33 @@ public class Engine {
 		JButton addNickel = new JButton("Add Nickel");
 		JButton addDime = new JButton("Add Dime");
 		JButton addQuarter = new JButton("Add Quarter");
-		JButton addHalfDollar = new JButton("Add Half Dollar");
-		JButton addPresDollar = new JButton("Add Presidential Dollar");
-		JButton addNADollar = new JButton("Add Native American Dollar");
-		JComponent[] buttonList = new JComponent[]{addPenny, addNickel, addDime, addQuarter, addHalfDollar, addPresDollar, addNADollar};
+		JButton[] buttonList = new JButton[]{addPenny, addNickel, addDime, addQuarter};
 		
-		JLabel pennyCount = new JLabel("0");
-		JLabel nickelCount = new JLabel("0");
-		JLabel dimeCount = new JLabel("0");
-		JLabel quarterCount = new JLabel("0");
-		JLabel halfDollarCount = new JLabel("0");
-		JLabel presDollarCount = new JLabel("0");
-		JLabel nADollarCount = new JLabel("0");
-		JComponent[] labelList = new JLabel[]{pennyCount, nickelCount, dimeCount, quarterCount, halfDollarCount,presDollarCount, nADollarCount};
+		addPenny.addActionListener(new ActionListener(){
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				Penny p = new Penny();
+				System.out.println(p.getValue());
+			}
+		});
+		
+		JLabel pennyCount = new JLabel("Pennies: 0");
+		JLabel nickelCount = new JLabel("Nickels: 0");
+		JLabel dimeCount = new JLabel("Dimes: 0");
+		JLabel quarterCount = new JLabel("Quarters: 0");
+		JComponent[] labelList = new JLabel[]{pennyCount, nickelCount, dimeCount, quarterCount};
 		
 		input.setLayout(new GridLayout(1, 1));
 		inputSub1.setLayout(new GridLayout(7, 1));
-//		inputSub2.setLayout(new GridLayout(1, 7));
+		inputSub2.setLayout(new GridLayout(1, 7));
 		addPanel(buttonList, inputSub1);
 		addPanel(labelList, inputSub2);
 		input.add(inputSub1);
-//		input.add(inputSub2);
+		input.add(inputSub2);
 		frame.add(input);
 		frame.setVisible(true);
+		
+		
 		
 //		JPanel output = new JPanel();
 //		JPanel outputSub1 = new JPanel();
@@ -64,15 +66,17 @@ public class Engine {
 			target.add(jc);
 		}
 	}
-	public void addManyActionListeners(JButton[] bList){
-		for(int i = 0; i < bList.length; i++){
-			bList[i].addActionListener(new ActionListener(){
+	public static void addManyActionListeners(JButton[] bList){
+		for(count = 0; count < bList.length; count++){
+			bList[count].addActionListener(new ActionListener(){
 				@Override
 				public void actionPerformed(ActionEvent e) {
-					// TODO Auto-generated method stub
-					
+					System.out.println(coinList[getCount()].val);
 				}
 			});
 		}
+	}
+	public static int getCount(){
+		return count;
 	}
 }
