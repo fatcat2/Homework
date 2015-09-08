@@ -4,6 +4,7 @@ import java.util.ArrayList;
 public class PiggyBank {
 	ArrayList<Coin> coinList = new ArrayList<Coin>();
 	int numCoins;
+	
 	double weight;
 	double totalVal;
 	public PiggyBank(){
