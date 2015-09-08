@@ -6,7 +6,7 @@ public class PiggyBank {
 	int numCoins;
 	
 	double weight;
-	double totalVal;
+	int totalVal = 1;
 	public PiggyBank(){
 		numCoins = 0;
 		weight = 0;
@@ -14,8 +14,7 @@ public class PiggyBank {
 	}
 	public void calcVal(){
 		for(Coin c: this.coinList){
-			totalVal += c.getValue();
-			weight += c.getWeight();
+			addVal(c.getValue());
 		}
 	}
 	public double getVal(){

@@ -1,8 +1,8 @@
 public class Coin {
-	double val;
+	int val;
 	double weight;
-	public double getValue(){
-		return val / 100;
+	public int getValue(){
+		return val;
 	}
 	public double getWeight(){
 		return weight;
