@@ -18,7 +18,7 @@ public class Engine {
 	public static void main(String[] args){
 		
 		//Declaring panels and frame.
-		JFrame frame = new JFrame("MPG Calculator 2000");
+		JFrame frame = new JFrame("MPG Calculator 1000");
 		JPanel p = new JPanel();
 		JPanel p2 = new JPanel();
 		
@@ -33,7 +33,7 @@ public class Engine {
 		final Car c = new Car();
 		
 		//Declaring and init JLabels and buttons.
-		JLabel instructions = new JLabel("<html><h1>Welcome to the MPG Calculator 3000!</h1></html>");
+		JLabel instructions = new JLabel("<html><h1>Welcome to the MPG Calculator 1000!</h1></html>");
 		JLabel i2 = new JLabel("<html>Please enter the amount of miles in the top box, and the number of gallons used in the lower box.</html>");
 		JButton b4 = new JButton("DRIVE");
 		b4.addActionListener(new ActionListener(){
