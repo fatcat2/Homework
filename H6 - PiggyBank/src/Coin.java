@@ -4,12 +4,8 @@
  * Description: This is the coin superclass, which all the coins extend.
  */
 public class Coin {
-	int val;
-	double weight;
-	public int getValue(){
+	int val; //The value
+	public int getValue(){ //The accessor
 		return val;
-	}
-	public double getWeight(){
-		return weight;
 	}
 }

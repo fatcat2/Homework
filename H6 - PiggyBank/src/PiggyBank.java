@@ -11,10 +11,10 @@ import javax.swing.JLabel;
 public class PiggyBank {
 	//The coins are stored in the arrayList
 	ArrayList<Coin> coinList = new ArrayList<Coin>();
-	Double totalVal = 1.0;
+	Double totalVal = 1.0; //Init total value;.
 	public PiggyBank(){
-		totalVal = 0.0;
 	}
+	//The other constructor.
 	public PiggyBank(int pNum, int dNum, int nNum, int qNum){
 		for(int i = 0; i <= pNum; i++){
 			coinList.add(new Penny());
@@ -29,18 +29,19 @@ public class PiggyBank {
 			coinList.add(new Quarter());
 		}
 	}
+	//Calculates the total money and setsTExt the appropriate JLabel
 	public void calcVal(JLabel l){
 		double total = 0;
 		for(int i = 0; i < coinList.size(); i++){
-//			System.out.println(coinList.get(i).getValue());
 			total += coinList.get(i).getValue();
 		}
-//		System.out.println("total: " + toPercent(total) + "\n");
 		l.setText("Total Money: $" + toPercent(total));
 	}
+	//Used to circumvent some errors.
 	public double toPercent(double x){
 		return x/ 100;
 	}
+	//Name says it all, clears out all the money in the bank.
 	public void youBrokeSon(){
 		coinList.clear();
 	}
