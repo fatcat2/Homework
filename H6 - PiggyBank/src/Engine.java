@@ -2,10 +2,10 @@ import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JComponent;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 
@@ -19,7 +19,7 @@ public class Engine {
 	int numNADollar;
 	public static void main(String[] args){
 		JFrame frame = new JFrame("PiggyBankYay!");
-		frame.setSize(600, 400);
+		frame.setSize(640, 400);
 		PiggyBank p = new PiggyBank();
 		
 		JPanel input = new JPanel();
@@ -35,19 +35,30 @@ public class Engine {
 		JButton addNADollar = new JButton("Add Native American Dollar");
 		JComponent[] buttonList = new JComponent[]{addPenny, addNickel, addDime, addQuarter, addHalfDollar, addPresDollar, addNADollar};
 		
+		JLabel pennyCount = new JLabel("0");
+		JLabel nickelCount = new JLabel("0");
+		JLabel dimeCount = new JLabel("0");
+		JLabel quarterCount = new JLabel("0");
+		JLabel halfDollarCount = new JLabel("0");
+		JLabel presDollarCount = new JLabel("0");
+		JLabel nADollarCount = new JLabel("0");
+		JComponent[] labelList = new JLabel[]{pennyCount, nickelCount, dimeCount, quarterCount, halfDollarCount,presDollarCount, nADollarCount};
 		
-		
-		input.setLayout(new GridLayout(2, 1));
-		inputSub1.setLayout(new BoxLayout(frame, BoxLayout.Y_AXIS));
-		inputSub2.setLayout(new BoxLayout(frame, BoxLayout.Y_AXIS));
-		
-		
+		input.setLayout(new GridLayout(1, 1));
+		inputSub1.setLayout(new GridLayout(7, 1));
+//		inputSub2.setLayout(new GridLayout(1, 7));
+		addPanel(buttonList, inputSub1);
+		addPanel(labelList, inputSub2);
+		input.add(inputSub1);
+//		input.add(inputSub2);
+		frame.add(input);
+		frame.setVisible(true);
 		
 //		JPanel output = new JPanel();
 //		JPanel outputSub1 = new JPanel();
 //		JPanel outputSub2 = new JPanel();
 	}
-	public void addPanel(JComponent[] cList, JPanel target) {
+	public static void addPanel(JComponent[] cList, JPanel target) {
 		target.setLayout(new GridLayout(3, 1));
 		for(JComponent jc: cList){
 			target.add(jc);
