@@ -13,13 +13,12 @@ public class PiggyBank {
 		totalVal = 0.0;
 	}
 	public void calcVal(){
-		int total = 0;
+		double total = 0;
 		for(int i = 0; i < coinList.size(); i++){
 			System.out.println(coinList.get(i).getValue());
 			total += coinList.get(i).getValue();
 		}
-		System.out.println("total: " + total + "\n");
-		totalVal = (double) (total / 100);
+		System.out.println("total: " + toPercent(total) + "\n");
 	}
 	public double getVal(){
 		calcVal();
@@ -36,5 +35,8 @@ public class PiggyBank {
 	}
 	public void addCoin(Coin c){
 		this.coinList.add(c);
+	}
+	public double toPercent(double x){
+		return x/ 100;
 	}
 }

@@ -24,6 +24,7 @@ public class Engine {
 	public static void main(String[] args){
 		JFrame frame = new JFrame("PiggyBankYay!");
 		frame.setSize(640, 400);
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		JPanel input = new JPanel();
 		JPanel inputSub1 = new JPanel();
 		JPanel inputSub2 = new JPanel();
