@@ -19,6 +19,8 @@ public class PiggyBank<qNum> {
 	final int Quarter = 3;
 	final int Dollar = 4;
 	
+	String type;
+	
 	int pNum;
 	int dNum;
 	int nNum;
@@ -43,12 +45,12 @@ public class PiggyBank<qNum> {
 	}
 	//Calculates the total money and setsTExt the appropriate JLabel
 	public void calcVal(JLabel totalLabel, JLabel cLabel, int cType){
-		String coinName = coinType(cType);
+		updateNums();
 		double total = 0;
 		for(int i = 0; i < coinList.size(); i++){
 			total += coinList.get(i).getValue();
 		}
-		cLabel.setText(coinName + ": ");
+		cLabel.setText("hello");
 		totalLabel.setText("Total Money: $" + toPercent(total));
 	}
 	//Used to circumvent some errors.
@@ -67,6 +69,9 @@ public class PiggyBank<qNum> {
 	public int getPNum(){
 		return pNum;
 	}
+	public int getNNum(){
+		return nNum;
+	}
 	public int getDNum(){
 		return dNum;
 	}
@@ -81,7 +86,7 @@ public class PiggyBank<qNum> {
 		String s = null;
 		switch(coin){
 		case 0:
-			s = "Pennies";
+			type = "Pennies";
 		case 1:
 			s = "Nickels";
 		case 2:
