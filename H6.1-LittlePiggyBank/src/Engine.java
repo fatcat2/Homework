@@ -55,7 +55,7 @@ public class Engine {
 			public void actionPerformed(ActionEvent e) {
 				//Content of all methods pretty much the same.
 				p.coinList.add(new Penny()); //add that type coin to the ArrayList in PiggyBank
-				p.calcVal(totalMoney, pennyCount, p.Penny); //Calculate the total money and setText() of JLabel accordingly
+				p.calcVal(totalMoney); //Calculate the total money and setText() of JLabel accordingly
 				updateLabels();
 			}
 		});
@@ -64,7 +64,7 @@ public class Engine {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				p.coinList.add(new Nickel());
-				p.calcVal(totalMoney, nickelCount, p.Nickel);
+				p.calcVal(totalMoney);
 				updateLabels();
 			}
 		});
@@ -73,7 +73,8 @@ public class Engine {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				p.coinList.add(new Dime());
-				p.calcVal(totalMoney, dimeCount, p.Dime);
+				p.calcVal(totalMoney);
+				updateLabels();
 			}
 		});
 		
@@ -81,7 +82,7 @@ public class Engine {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				p.addCoin(new Quarter());
-				p.calcVal(totalMoney, quarterCount, p.Quarter);
+				p.calcVal(totalMoney);
 				updateLabels();
 			}
 		});
@@ -89,7 +90,7 @@ public class Engine {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				p.coinList.add(new Dollar()); //add that type coin to the ArrayList in PiggyBank
-				p.calcVal(totalMoney, dollarCount, p.Dollar); //Calculate the total money and setText() of JLabel accordingly
+				p.calcVal(totalMoney); //Calculate the total money and setText() of JLabel accordingly
 				updateLabels();
 			}
 		});
@@ -125,10 +126,10 @@ public class Engine {
 		}
 	}
 	public static void updateLabels(){
-		pennyCount.setText("Pennies" + p.getPNum());
-		dimeCount.setText("Dimes" + p.getDNum());
-		nickelCount.setText("Nickels" + p.getNNum());
-		quarterCount.setText("Quarters" + p.getQNum());
+		pennyCount.setText("Pennies: " + p.getPNum());
+		dimeCount.setText("Dimes: " + p.getDNum());
+		nickelCount.setText("Nickels: " + p.getNNum());
+		quarterCount.setText("Quarters: " + p.getQNum());
 	}
 	
 }
