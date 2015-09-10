@@ -100,7 +100,7 @@ public class Engine {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				p.youBrokeSon(totalMoney); //Clears money in PiggyBank
-//				SteamSummerSale(); //Clears money on GUI
+				updateLabels();
 				//Makes sure the message gets across.
 			}
 		});

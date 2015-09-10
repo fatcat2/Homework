@@ -5,6 +5,7 @@
  * having to do with PiggyBank
  */
 import java.util.ArrayList;
+
 import javax.swing.JLabel;
 
 
@@ -12,20 +13,13 @@ public class PiggyBank<qNum> {
 	//The coins are stored in the arrayList
 	ArrayList<Coin> coinList = new ArrayList<Coin>();
 	Double totalVal = 1.0; //Init total value;.
-
-	final int Penny = 0;
-	final int Nickel = 1;
-	final int Dime = 2;
-	final int Quarter = 3;
-	final int Dollar = 4;
-	
-	String type;
 	
 	int pNum;
 	int dNum;
 	int nNum;
 	int qNum;
 	int DNum;
+	
 	public PiggyBank(){
 	}
 	//The other constructor.
@@ -45,11 +39,12 @@ public class PiggyBank<qNum> {
 	}
 	//Calculates the total money and setsTExt the appropriate JLabel
 	public void calcVal(JLabel totalLabel){
-		double total = 0;
+		int total = 0;
 		for(int i = 0; i < coinList.size(); i++){
 			total += coinList.get(i).getValue();
 		}
 		updateNums();
+			optimizeSpace(total);
 		totalLabel.setText("Total Money: $" + toPercent(total));
 	}
 	//Used to circumvent some errors.
@@ -59,7 +54,7 @@ public class PiggyBank<qNum> {
 	//Name says it all, clears out all the money in the bank.
 	public void youBrokeSon(JLabel totalLabel){
 		coinList.clear();
-		clearCoffers();
+		clearNums();
 		totalLabel.setText("$0.00");
 	}
 	public int getQNum(){
@@ -80,19 +75,31 @@ public class PiggyBank<qNum> {
 	public void addCoin(Coin c){
 		coinList.add(c);
 	}
-	private void clearCoffers(){
+	private void clearNums(){
 		qNum = 0;
 		dNum = 0;
 		pNum = 0;
 		DNum = 0;
 		nNum = 0;
 	}
+	private void optimizeSpace(int total){
+		//This method calculates the number of coins needed to calculate the user input value.
+		//The method starts from quarters, the coin with the highest value, then progressively moves down.
+		//This way, when the program gets to nickels and pennies, it doesn't need to calculate another placeholder for pennies.
+		int a = (total / 25);
+		total -= a * 25;
+		int b = (total / 10);
+		total -= b * 10;
+		int c =  total / 5;
+		int d = total % 5;
+		qNum = a;
+		dNum = b;
+		nNum =  c;
+		pNum = d;
+		
+	}
 	private void updateNums(){
-		qNum = 0;
-		pNum = 0;
-		dNum = 0;
-		nNum = 0;
-		DNum = 0;
+		clearNums();
 		for(Coin c : coinList){
 			if(c instanceof Quarter ){
 				qNum++;
