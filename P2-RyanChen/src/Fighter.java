@@ -45,6 +45,7 @@ public class Fighter {
 	 */
 	public void takeHealth(double x){
 		health -= x;
+		checkDead();
 	}
 	/**
 	 * 
