@@ -17,20 +17,20 @@ public class Arrow extends Line2D{
 	public Arrow(int x_t, int y_t, int smallLineLength, int lineLength, int degree, Graphics2D g2, boolean flip, boolean stem){
 		this.x = x_t;
 		this.y = y_t;
-		x_1 = (int) (x + smallLineLength * Math.cos(degree));
-		x_2 = x  + lineLength;
-		x_3 = (int) (x_2 + (smallLineLength * Math.cos(degree)));
+		double cosT = ((int) smallLineLength * Math.cos(degree));
+		x_1 = (int) (x + cosT);
+		x_2 = x_1  + lineLength;
+		x_3 = (int) (x_2 + cosT);
 		y_1 = (int) (y + (smallLineLength * Math.sin(degree)));
 		y_2 = (int) (y - (smallLineLength * Math.sin(degree)));
 		Line2D.Double[] arr;
 		if(stem){
 			g2.draw(new Line2D.Double(x, y, x_2, y));
 		}
-		if (flip){
-			arr = new Line2D.Double[]{new Line2D.Double(x, y_1, x_1, y), new Line2D.Double(x, y_2, x_1, y)};
-		}else{
-			arr = new Line2D.Double[]{new Line2D.Double(x, y, x_1, y_1), new Line2D.Double(x, y, x_1, y_2)};
-		}
+			arr = new Line2D.Double[]{new Line2D.Double(x_3, y_1, x_2, y), 
+					new Line2D.Double(x_3, y_2, x_2, y), 
+					new Line2D.Double(x, y, x_1, y_1), 
+					new Line2D.Double(x, y, x_1, y_2)};
 		for(int i = 0; i < arr.length; i++){
 			g2.draw(arr[i]);
 		}

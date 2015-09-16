@@ -8,5 +8,6 @@ public class Engine {
 		int sideLength = rand.nextInt(100) + 1;
 		RegularPolygon p = new RegularPolygon(sideLength, sides);
 		p.getResults();
+//		System.out.println("hello");
 	}
 }
