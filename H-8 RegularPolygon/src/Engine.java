@@ -2,7 +2,7 @@ import java.util.Random;
 
 
 public class Engine {
-	public static void main(){
+	public static void main(String[] args){
 		Random rand = new Random();
 		int sides = rand.nextInt(100) + 1;
 		int sideLength = rand.nextInt(100) + 1;
