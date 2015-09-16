@@ -1,4 +1,3 @@
-
 public class Fighter {
 	/**
 	 * The name of the fighter
@@ -91,6 +90,7 @@ public class Fighter {
 	public void checkDead(){
 		if(health <= 0){
 			status = false;
+			health = 0;
 		}
 	}
 	/**
