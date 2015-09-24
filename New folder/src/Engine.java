@@ -14,15 +14,16 @@ public class Engine {
 //		ArrayList<String> list = new ArrayList<String>();
 		try{
 			PrintWriter pw = new PrintWriter(new BufferedWriter(new FileWriter(output)));
-			BufferedReader br = new BufferedReader(new FileReader(file));
-			String s = br.readLine();
-			String[] arr = s.split("[\"\"]");
-//			list.add(s.substring(0, s.indexOf(",")));
-//			list.add(s.substring(s.indexOf(",") + 1));
-//			pw.printf("%-10s", list.get(0));
-			for(int i = 0; i < arr.length; i += 2){
-				System.out.println(arr[i].trim());
-				System.out.println(arr[i + 1].trim());
+			BufferedReader br = new BufferedReader(new FileReader(file));	
+			String total = "";
+			while(br.readLine() != null){
+				String s = br.readLine();
+				total = total + s;
+			}
+			String[] arr = total.split("[\"\"]");
+			for(int i = 1; i < arr.length - 1; i += 4){
+				pw.print(arr[i].trim());
+				pw.print(arr[i + 2].trim() + "\n");
 			}
 			pw.close();
 		}catch(Exception e){
