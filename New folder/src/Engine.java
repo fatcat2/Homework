@@ -45,6 +45,16 @@ public class Engine {
 	public static void viewReceipt(PrintWriter pw, ArrayList<String> arr){
 		System.out.println("---Receipt Start---");
 		for(int i = 1; i < arr.size() - 1; i = i +  4){
+			System.out.printf("%-10s", arr.get(i).trim());
+			System.out.printf("%-10s", arr.get(i + 2).trim());
+			System.out.print("\n");
+		}
+		System.out.println("----Receipt End----");
+	}
+	
+	public static void printReceipt(PrintWriter pw, ArrayList<String> arr){
+		System.out.println("---Receipt Start---");
+		for(int i = 1; i < arr.size() - 1; i = i +  4){
 			pw.printf("%-10s", arr.get(i).trim());
 			pw.printf("%-10s", arr.get(i + 2).trim());
 			pw.print("\n");
@@ -60,12 +70,34 @@ public class Engine {
 		System.out.println("Welcome to the Advanced Grocery List!");
 		viewReceipt(pw,arr);
 		System.out.println("Would you like to add anything to your receipt? (Y/N)");
+		boolean keepGoing = true;
 		if(scan.next().equals("Y")){
-			viewReceipt(pw,arr);
+			while(keepGoing){
+				addItem(arr);
+				viewReceipt(pw,arr);
+				System.out.println("Is this all? (Y/N");
+				if(scan.next().equals("Y")){
+					System.out.println("Final Receipt:");
+					printReceipt(pw,arr);
+					System.out.println("Have a nice day!");
+					keepGoing = false;
+				}
+			}
 		}else{
 			System.out.println("Final Receipt:");
-			viewReceipt(pw,arr);
+			printReceipt(pw,arr);
 			System.out.println("Have a nice day!");
+		}
+	}
+	public static void addItem(ArrayList<String> arr){
+		System.out.println("Please enter the item name:");
+		String newItem = scan.next() + "\",";
+		System.out.println("Please enter the price of the item:");
+		String newPrice = "\"" + scan.next() + "\",";
+		String temp = newItem + newPrice;
+		String[] tempList = temp.split("[\"\"]");
+		for(int i = 0; i < tempList.length; i++){
+			arr.add(tempList[i]);
 		}
 	}
 }
