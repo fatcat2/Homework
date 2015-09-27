@@ -16,16 +16,40 @@ public class Engine {
 			PrintWriter pw = new PrintWriter(new BufferedWriter(new FileWriter(output)));
 			BufferedReader br = new BufferedReader(new FileReader(file));	
 			String total = "";
-			while(br.readLine() != null){
-				String s = br.readLine();
+			String s;
+			
+//			total = total + s;
+			
+//			boolean keepGoing = true;
+//			while(keepGoing){
+//				String s = br.readLine();
+//				if(s == null){
+//					keepGoing = false;
+//					System.out.println("stopped");
+//					break;
+//				}else{
+//					total = total + s;
+//				}
+//			}
+			
+			while((s = br.readLine()) != null){
 				total = total + s;
 			}
+			System.out.println("I'm done scanning");
 			String[] arr = total.split("[\"\"]");
-			for(int i = 1; i < arr.length - 1; i += 4){
-				pw.print(arr[i].trim());
-				pw.print(arr[i + 2].trim() + "\n");
+			
+			System.out.println(arr.length);
+			
+			for(int i = 1; i < arr.length - 1; i = i +  4){
+				System.out.println(i);
+				pw.printf("%-10s", arr[i].trim());
+				pw.printf("%-10s", arr[i + 2].trim());
+				pw.print("\n");
 			}
+			System.out.println("I'm done writing to the file.");
+			
 			pw.close();
+			br.close();
 		}catch(Exception e){
 			e.printStackTrace();
 		}

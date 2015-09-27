@@ -1,2 +1,2 @@
 "Musubi","5.00",
-"Monster, Meat","80.00"
+"Chirashi","5.00"
