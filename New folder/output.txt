@@ -2,6 +2,5 @@ Item      Price
 Musubi    5.00      
 Chirashi  5.00      
 Udon      8.00      
-Chicken   8.00      
-Salad     7.75      
-Condoms   9.00      
+Fish      9.00      
+Pineapples15.00     

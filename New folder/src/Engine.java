@@ -100,4 +100,18 @@ public class Engine {
 			arr.add(tempList[i]);
 		}
 	}
+	public void writeToSource(File file, ArrayList<String> tempList){
+		try {
+			PrintWriter pw = new PrintWriter(new BufferedWriter(new FileWriter(file)));
+			int count;
+			for(int i = 1; i < tempList.size(); i += 4){
+				pw.print("\"" + tempList.get(i) + "\"");
+				pw.print("\"" + tempList.get(i + 1) + "\"");
+				pw.print("\"" + tempList.get(i + 2) + "\"");
+			}
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		
+	}
 }
