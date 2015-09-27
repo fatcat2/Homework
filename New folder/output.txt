@@ -1,2 +1,6 @@
+Item      Price     
+Musubi    5.00      
+Chirashi  5.00      
+Item      Price     
 Musubi    5.00      
 Chirashi  5.00      
