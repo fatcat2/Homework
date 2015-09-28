@@ -3,4 +3,3 @@ Musubi    5.00
 Chirashi  5.00      
 Udon      8.00      
 Fish      9.00      
-Pineapples15.00     

@@ -18,6 +18,7 @@ public class Engine {
 			BufferedReader br = new BufferedReader(new FileReader(file));
 			ArrayList<String> itemList = toArray(br);
 			userInterface(pw, itemList);
+			writeToSource(file, itemList);
 			pw.close();
 			br.close();
 		}catch(Exception e){
@@ -100,7 +101,7 @@ public class Engine {
 			arr.add(tempList[i]);
 		}
 	}
-	public void writeToSource(File file, ArrayList<String> tempList){
+	public static void writeToSource(File file, ArrayList<String> tempList){
 		try {
 			PrintWriter pw = new PrintWriter(new BufferedWriter(new FileWriter(file)));
 			int count;
