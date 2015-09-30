@@ -1,0 +1,5 @@
+name,behavior
+Inky,Bashful
+Pinky,Speedy
+Blinky,Shadow
+Clyde,Pokey
