@@ -18,7 +18,7 @@ public class Engine {
 	public static void main(String[] args) throws ParserConfigurationException, IOException{
 		try {
 			Scanner scan = new Scanner(new File("ghosts.txt"));
-			PrintWriter pw = new PrintWriter(new BufferedWriter(new FileWriter(new File("ghosts.xml.txt"))));
+			PrintWriter pw = new PrintWriter(new BufferedWriter(new FileWriter(new File("ghosts.xml"))));
 			String s;
 			System.out.println("<pac-man>");
 			int count = 0;

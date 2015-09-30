@@ -1,0 +1,16 @@
+<ghost>
+<name>Inky</name>
+<behavior>Bashful</behavior>
+</ghost>
+<ghost>
+<name>Pinky</name>
+<behavior>Speedy</behavior>
+</ghost>
+<ghost>
+<name>Blinky</name>
+<behavior>Shadow</behavior>
+</ghost>
+<ghost>
+<name>Clyde</name>
+<behavior>Pokey</behavior>
+</ghost>
