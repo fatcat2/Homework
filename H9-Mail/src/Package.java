@@ -15,6 +15,12 @@ public class Package {
 		girth = (2 * length) + (2 * width);
 		canSend();
 	}
+	public Package(int d1, int d2, int d3, int w){
+		int[] list = {d1, d2, d3};
+		girth = findGirth(list);
+		weight = w;
+		canSend();
+	}
 	private void canSend(){
 		if(girth > 100){
 			girthOK = false;
@@ -31,5 +37,14 @@ public class Package {
 		}else{
 			System.out.println("Package is okay");
 		}
+	}
+	private int findGirth(int[] arr){
+		int min = arr[0];
+		int mid = arr[1];
+		for(int i = 0; i < arr.length; i++){
+			min = Math.min(min, arr[i]);
+			mid = Math.min(min, arr[i]);
+		}
+		return (2*min) + (2*mid);
 	}
 }
