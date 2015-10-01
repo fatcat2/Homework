@@ -39,6 +39,24 @@ public class IRS {
 		System.out.println("Single: $" + tax);
 	}
 	private void calcMarried(){
-		
+		int t = 0;
+		int i = income;
+		if(i > 297350){
+			t = i - 297350;
+			tax = 88306 + (0.391 * t);
+		}else if(i <= 297350 && i > 166500){
+			t = i - 166500;
+			tax = 41855 + (0.355 * t);
+		}else if(i <= 166500 && i > 109250){
+			t = i - 109250;
+			tax = 14645 + (t * 0.305);
+		}else if(i <= 109250 && i > 45200){
+			t = i - 27050;
+			tax = 4057.5 + (t * 0.275);
+		}else if(i <= 45200){
+			t = i;
+			tax = 0.15 * t;
+		}
+		System.out.println("Married: $" + tax);
 	}
 }
