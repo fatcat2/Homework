@@ -8,7 +8,7 @@ public class IRS {
 	int income;
 	double tax;
 	boolean married;
-	public IRS(int i, boolean m){
+	public IRS(int i, boolean m){ //One custom constructor
 		income = i;
 		married = m;
 		if(m){
@@ -17,8 +17,8 @@ public class IRS {
 			calcSingle();
 		}
 	}
-	private void calcSingle(){
-		int t = 0;
+	private void calcSingle(){ //Uses a piecewise function to determine which rate to calculate tax.
+		int t = 0;			   //Is private in order to keep the shadowy inner workings of the IRS safe from the view of the public.
 		int i = income;
 		if(i > 297350){
 			t = i - 297350;
