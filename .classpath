@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="D17-Fibonacci/src"/>
+	<classpathentry kind="src" path="H-8 RegularPolygon/src"/>
+	<classpathentry kind="src" path="H11-IRS/src"/>
+	<classpathentry kind="src" path="H13-KochCurve/src"/>
+	<classpathentry kind="src" path="H5 - MPG/src"/>
+	<classpathentry kind="src" path="H6 - PiggyBank/src"/>
+	<classpathentry kind="src" path="H6.1-LittlePiggyBank/src"/>
+	<classpathentry kind="src" path="H7-Illusions/src"/>
+	<classpathentry kind="src" path="H9-Mail/src"/>
+	<classpathentry kind="src" path="New folder/src"/>
+	<classpathentry kind="src" path="P2-RyanChen/src"/>
+	<classpathentry kind="src" path="Q2P2-RyanChen/src"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="output" path="Q2P2-RyanChen/bin"/>
+</classpath>
