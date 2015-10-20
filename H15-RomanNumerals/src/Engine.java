@@ -21,7 +21,8 @@ public class Engine {
 			
 		}else if(n / 10 > 0){
 			int i = n/10;
-			int j = n%10;
+			System.out.print(i);
+			
 			
 		}else if(n / 5 > 0){
 			underTen(n);
