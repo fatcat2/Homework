@@ -20,47 +20,45 @@ public class Engine {
 	}
 	
 	public static String romanNumerals(int n, int count, String s){
-		if(n == 0){
-			s += "";
-		}else{
-			if(count == 0){
-				s +=  underTen(n%10) + " " + romanNumerals(n/10, count++, s);
-			}else if(count == 1){
-				s +=  tens(n%10) + " " + romanNumerals(n/10, count++,s );
-			}else if(count == 2){
-				s += hundreds(n%10) + " " + romanNumerals(n/10, count++, s);
-			}
-		}
+		s += thousands(n/1000);
+		s += hundreds(n%1000/100);
+		s += tens(n%100/10);
+		s += underTen(n%10);
 		return s;
 	}
 	
 	public static String thousands(int n){
-		return "";
+		String s = "";
+		for(int i = 0; i < n; i++){
+			s += "m";
+		}
+		return s;
 	}
 	
 	public static String hundreds(int n){
 		String s = "";
-		if(n / 100 > 0){
-			int i = n/100;
-			if(i >= 4){
-				int j = 5 - i;
-				if(j >= 0){
-					for(int x = 0; x < Math.abs(j); x++){
-						s = s + "x";
-					}
-					s =  s + "c";
-				}else if(j > -4){
-					System.out.print("d");
-					for(int x = 0; x < Math.abs(j); x++){
-						s = s + x;
-					}
-				}else{
-					s = "xc";
+		int i = n;
+		if(i >= 4){
+			int j = 5 - i;
+			if(j >= 0){
+				for(int x = 0; x < Math.abs(j); x++){
+					s = s + "c";
 				}
+				s =  s + "d";
+			}else if(j > -4){
+				System.out.print("d");
+				for(int x = 0; x < Math.abs(j); x++){
+					s = s + "c";
+				}
+			}
+		}else if(i > 0){
+			for(int x = 0; x < i; x++){
+				s = s + "c";
 			}
 		}
 		return s;
 	}
+	
 	
 	public static String tens(int n){
 		String s = "";
