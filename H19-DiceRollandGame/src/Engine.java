@@ -1,9 +1,11 @@
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Random;
 import java.util.Scanner;
 
-public class Engine {
+public class Engine implements ActionListener{
 	static Scanner scan = new Scanner(System.in);
 	static Random rand = new Random();
 
@@ -101,6 +103,12 @@ public class Engine {
 		case 3: pList.get(counter).addCoins(-1); center += 1;break;
 		case 4: break;
 		}
+	}
+
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

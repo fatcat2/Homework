@@ -1,0 +1,9 @@
+import javax.swing.JOptionPane;
+
+public class Engine {
+	public static void main(String[] args){
+		String s = JOptionPane.showInputDialog("Please enter the url you\nwould like to access");
+		JGET jget = new JGET(s);
+		jget.printSiteData();
+	}
+}
