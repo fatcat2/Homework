@@ -1,7 +1,6 @@
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStream;
@@ -113,20 +112,20 @@ public class JGET {
 		}
 	}
 	
-	private void printSite(){
-		try{
-			BufferedReader x = br;
-			File f = new File("src/" + "a" + ".txt");
-			PrintWriter pw = new PrintWriter(new BufferedWriter(new FileWriter(f)));
-			String s = "";
-			while((s = br.readLine()) != null){
-				pw.println(s);
-			}
-			pw.close();
-			x.close();
-		}catch(Exception e){
-			e.printStackTrace();
-		}
-	}
+//	private void printSite(){
+//		try{
+//			BufferedReader x = br;
+//			File f = new File("src/" + "a" + ".txt");
+//			PrintWriter pw = new PrintWriter(new BufferedWriter(new FileWriter(f)));
+//			String s = "";
+//			while((s = br.readLine()) != null){
+//				pw.println(s);
+//			}
+//			pw.close();
+//			x.close();
+//		}catch(Exception e){
+//			e.printStackTrace();
+//		}
+//	}
 	
 }
