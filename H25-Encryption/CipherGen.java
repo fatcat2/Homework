@@ -32,7 +32,7 @@ public class CipherGen{
             //System.out.println(c);
             numList.add(c);
             char d = (char) c;
-            enc_message += d;
+            enc_message += d + " ";
         }
         printEncMsg();
     }
