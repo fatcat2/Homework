@@ -6,8 +6,7 @@ public class CipherGen{
     int priv_key;
     //char[] c;
     ArrayList<Integer> numList = new ArrayList<Integer>();
-    String enc_message;
-    private HashMap<Integer, Character> map = new HashMap<Integer, Character>();
+    String enc_message = "";
     public CipherGen(String s, int public_key, int private_key){
         System.out.println(s);
         message = s;
@@ -27,12 +26,17 @@ public class CipherGen{
             //System.out.println(i);
             char a = charList.get(i);
             //System.out.println(a);
-            int b = Character.getNumericValue(a);
+            int b = a;
             //System.out.println(b);
-            int c = b * priv_key;
+            int c = (b * priv_key) + (priv_key * 3) - (priv_key *12);
             //System.out.println(c);
             numList.add(c);
-            System.out.print(c + " ");
+            char d = (char) c;
+            enc_message += d;
         }
+        printEncMsg();
+    }
+    public void printEncMsg(){
+        System.out.println(enc_message);
     }
 }
