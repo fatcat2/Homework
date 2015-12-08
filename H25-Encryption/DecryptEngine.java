@@ -12,13 +12,14 @@ public class DecryptEngine{
          String list[] = s.split("\\s");
          pub_key = Integer.parseInt(list[0]);
          for(int i = 1; i < list.length; i++){
-             int x = Integer.parseInt(list[i]);
+             System.out.println(list[i]);
+             int b = list[i].charAt(0);
              //System.out.println(x);
              int their_key = pub_key / priv_key;
              //System.out.println(their_key);
-             int z = x / their_key;
-             char a = (char) z;
-             System.out.print(a);
+             int c = (b / their_key) + 9;
+             char d = (char) c;
+             System.out.print(d);
          }
     }
 }
