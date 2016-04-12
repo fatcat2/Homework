@@ -2,8 +2,9 @@ import java.util.*;
 public class EMDirectory{
 	HashMap<Name, String> map = new HashMap<Name, String>();
 	public EMDirectory(){}
-	public void addEntry(String str, String eAdd){
-		map.add(new Name(str), eAdd);
+	public void addEntry(String lname, String fName, int id, String eAdd){
+		Name n = new Name(lname, fName, id); 
+		map.put(n, eAdd);
 	}
 	public String lookup(Name name){
 		if(map.containsKey(name)){

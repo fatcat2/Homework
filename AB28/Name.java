@@ -1,15 +1,17 @@
+import java.util.*;
 public class Name{
 	String name = "";
 	String lastname = "";
-	public Name(String str){
-		String[] arr = str.split(" ");
-		name = arr[0];
-		lastname = arr[1];
+	int idnum = 0;
+	public Name(String lname, String fName, int id){
+		name = fName;
+		lastname = lname;
+		idnum = id;
 	}
 	public String getName(){
 		return name;
 	}
-	public String.getLastName(){
+	public String getLastName(){
 		return lastname;
 	}
 }
