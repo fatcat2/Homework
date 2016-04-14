@@ -1,9 +1,11 @@
 import java.util.*;
 public class EMDirectory{
 	HashMap<Name, String> map = new HashMap<Name, String>();
+	HashMap<String, ArrayList<String>> map2 = new HashMap<String, ArrayList<String>>;
+	ArrayList<String> list;
 	public EMDirectory(){}
-	public void addEntry(String lname, String fName, int id, String eAdd){
-		Name n = new Name(lname, fName, id); 
+	public void addEntry(String lname, String fName, String eAdd){
+		Name n = new Name(lname, fName); 
 		map.put(n, eAdd);
 	}
 	public String lookup(Name name){
@@ -13,17 +15,8 @@ public class EMDirectory{
 			return null;
 		}
 	}
-	public String lookupLastName(String lastName){
-		String x = "not found";
-		Iterator i = map.entrySet.Iterator();
-		while(i.hasNext)
-		for(Name n : map.keySet()){
-			if(n.getLastName().equals("lastName")){
-				x =  map.get(n);
-				break;
-			}
-		}
-		return x;
+	public String lookupLastName(Name name){
+		return 
 	}
 	public void listAll(){
 		for(Name n : map.keySet()){
