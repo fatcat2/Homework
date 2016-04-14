@@ -14,11 +14,16 @@ public class EMDirectory{
 		}
 	}
 	public String lookupLastName(String lastName){
+		String x = "not found";
+		Iterator i = map.entrySet.Iterator();
+		while(i.hasNext)
 		for(Name n : map.keySet()){
 			if(n.getLastName().equals("lastName")){
-				return map.get(n);
+				x =  map.get(n);
+				break;
 			}
 		}
+		return x;
 	}
 	public void listAll(){
 		for(Name n : map.keySet()){

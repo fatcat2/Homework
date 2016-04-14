@@ -20,6 +20,7 @@ public class Engine{
 				}
 			}
 			em.listAll();
+			System.out.println(em.lookupLastName("Chen"));
 		}catch(FileNotFoundException e){}
 		
 	}
